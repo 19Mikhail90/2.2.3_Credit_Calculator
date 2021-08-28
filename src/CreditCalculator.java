@@ -1,17 +1,24 @@
 public class CreditCalculator {
 
-    public double calculate(int creditSum, int years) {
+    public double calculate(int creditSumB8, int years) {
 
-        double interestRate = 9.99;
-        int month; // делал через зоведение локальных переменных
+        double interestRate;
+        interestRate = 9.99; //  B6
+        double month; // B7
         month = years * 12;
-        int fistLine;
-        fistLine = (int) ((interestRate / 12) * Math.pow((1 + interestRate/12), month));
-        int secondLine ;
-        secondLine = (int) Math.pow((1 + interestRate / 12), (month - 1));
-        double monthlyPayment =  ((-creditSum * fistLine ) / secondLine); // тут специально -creditSum * fistLine взяты в доп скобки
+        //// Делимое
+        double step_1 = 1+interestRate/12/100;
+        double step_2 = Math. pow(step_1,month);
+        double step_3 = interestRate/12/100;
+        double step_4 = step_3 * step_2;
+        //// Делитель
+        double step_5 = 1+interestRate/12/100;
+        double step_6 = Math. pow(step_5,month) - 1;
+        ////Операция деления
+        double step_7 = step_4 / step_6;
+        double monthlyPayment = step_7 * creditSumB8;
 
-        return monthlyPayment;
+         return monthlyPayment;
     }
 }
 
